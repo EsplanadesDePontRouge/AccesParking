@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8" />
-  <title>Accueil - Plans Livraison</title>
+  <title>Cheminements Livraison</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body { margin:0; font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; background: #f0f0f0; }
@@ -24,10 +24,10 @@
 </head>
 <body>
   <div class="menu">
-    <button onclick="location.href='ss1.html'">Plan SS1</button>
-    <button onclick="location.href='ss2.html'">Plan SS2</button>
-    <button onclick="location.href='ss3.html'">Plan SS3</button>
-    <button onclick="location.href='livraisons.html'">Cheminements livraison</button>
+    <button onclick="location.href='ss1.html?livraison=E1'">Livraison E1</button>
+    <button onclick="location.href='ss1.html?livraison=E2'">Livraison E2</button>
+    <button onclick="location.href='ss1.html?livraison=E3'">Livraison E3</button>
+    <button onclick="location.href='ss1.html?livraison=ALTO'">Livraison ALTO</button>
   </div>
 </body>
 </html>
