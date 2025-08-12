@@ -20,9 +20,22 @@
       color: white;
       border-radius: 8px;
     }
+    #retour {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      padding: 10px 15px;
+      font-size: 16px;
+      background-color: #0078D4;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
+  <button onclick="window.history.back()" id="retour">← Retour</button>
   <div class="menu">
     <button onclick="location.href='ss1.html?livraison=E1'">Livraison E1</button>
     <button onclick="location.href='ss1.html?livraison=E2'">Livraison E2</button>
