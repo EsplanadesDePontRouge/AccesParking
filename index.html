@@ -1,34 +1,73 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Plan du site</title>
+  <meta charset="utf-8" />
+  <title>Plan SS1 - Livraison</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
   <style>
-    #map { height: 400px; }
+    body { margin:0; font-family: sans-serif; }
+    #menu {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      padding: 20px;
+      background: #f0f0f0;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      background-color: #0078D4;
+      color: white;
+      border-radius: 5px;
+    }
+    #map { height: calc(100vh - 80px); width: 100vw; }
   </style>
 </head>
 <body>
-  <h2>Où voulez-vous aller ?</h2>
-  <select id="destination">
-    <option value="47.5001,8.6001">Accueil</option>
-    <option value="47.5010,8.6010">Sortie Est</option>
-    <option value="47.5020,8.6020">Bâtiment B</option>
-  </select>
+  <div id="menu">
+    <button onclick="afficherChemin('E1')">Livraison E1</button>
+    <button onclick="afficherChemin('E2')">Livraison E2</button>
+    <button onclick="afficherChemin('E3')">Livraison E3</button>
+    <button onclick="afficherChemin('ALTO')">Livraison ALTO</button>
+  </div>
   <div id="map"></div>
 
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   <script>
-    const map = L.map('map').setView([47.5000, 8.6000], 17);
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
-
-    const marker = L.marker([47.5000, 8.6000]).addTo(map).bindPopup("Vous êtes ici").openPopup();
-
-    document.getElementById('destination').addEventListener('change', function() {
-      const coords = this.value.split(',');
-      map.setView(coords, 18);
-      L.marker(coords).addTo(map).bindPopup("Destination").openPopup();
+    const map = L.map('map', {
+      crs: L.CRS.Simple,
+      minZoom: -2
     });
+
+    const bounds = [[0,0], [1000,1200]];
+    L.imageOverlay('EPR_SS1.png', bounds).addTo(map);
+    map.fitBounds(bounds);
+
+    const points = {
+      E1: { nom: "Livraison E1", coord: [276, 190], chemin: [[520,989],[469,987],[468,690],[275,678],[278,192]] },
+      E2: { nom: "Livraison E2", coord: [224, 887], chemin: [[520,989],[469,987],[468,690],[275,678],[270,889],[224,888]] },
+      E3: { nom: "Livraison E3", coord: [748, 857], chemin: [[520,989],[469,987],[472,803],[754,812],[751,851]] },
+      ALTO: { nom: "Livraison ALTO", coord: [544, 292], chemin: [[520,989],[469,987],[468,690],[275,678],[277,299],[550,294]] }
+    };
+
+    let cheminActuel = null;
+    let marqueurActuel = null;
+
+    function afficherChemin(code) {
+      if (cheminActuel) map.removeLayer(cheminActuel);
+      if (marqueurActuel) map.removeLayer(marqueurActuel);
+
+      const p = points[code];
+      cheminActuel = L.polyline(p.chemin.map(([y,x]) => [y,x]), {
+        color: 'blue', weight: 4, opacity: 0.7
+      }).addTo(map);
+
+      marqueurActuel = L.marker([p.coord[0], p.coord[1]]).addTo(map).bindPopup(p.nom).openPopup();
+    }
   </script>
 </body>
 </html>
