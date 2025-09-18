@@ -6,24 +6,23 @@ const map = L.map('map', {
 const image = 'assets/EPR_SS1.png';
 const imageSize = [1007, 1215];
 const bounds = [[0, 0], imageSize];
-
 L.imageOverlay(image, bounds).addTo(map);
 map.fitBounds(bounds);
 
-// Cheminement ALTO
+function corriger(x, y) {
+  return [1007 - y, x];
+}
+
+// 🔵 Cheminement E2
 const chemin = [
-  [455, 287],
-  [391, 287],
-  [455, 287],
-  [727, 287],
-  [727, 692],
-  [529, 692],
-  [529, 991],
-  [480, 991]
+  corriger(990, 520),
+  corriger(990, 471),
+  corriger(690, 468),
+  corriger(680, 273),
+  corriger(887, 269)
 ];
+L.polyline(chemin, { color: '#0078D4', weight: 4 }).addTo(map);
 
-L.polyline(chemin, { color: '#FF8800', weight: 4 }).addTo(map);
-
-// Points ALTO
-L.marker([455, 287]).addTo(map).bindPopup("Livraison ALTO");
-L.marker([391, 287]).addTo(map).bindPopup("Livraison ALTO");
+// 📍 Pings E2
+L.marker(corriger(811, 224)).addTo(map).bindTooltip("L7", { permanent: true, direction: "top" });
+L.marker(corriger(886, 222)).addTo(map).bindTooltip("L8", { permanent: true, direction: "top" });
