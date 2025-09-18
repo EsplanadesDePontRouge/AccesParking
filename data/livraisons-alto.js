@@ -4,28 +4,36 @@ const map = L.map('map', {
 });
 
 const image = 'assets/EPR_SS1.png';
-const imageSize = [1007, 1215];
+const hauteur = 1007;
+const imageSize = [hauteur, 1215];
 const bounds = [[0, 0], imageSize];
+
 L.imageOverlay(image, bounds).addTo(map);
 map.fitBounds(bounds);
 
-// Cheminement ALTO
-const chemin = [
-  [455,1007 - 287],
-  [727,1007 - 287],
-  [727,1007 - 692],
-  [529,1007 - 692],
-  [529,1007 - 991],
-  [480,1007 - 991]
+// Fonction de correction
+function corrigerCoord(y, x) {
+  return [hauteur - y, x];
+}
+
+// Coordonnées brutes [x, y]
+const cheminBrut = [
+  [455, 287],
+  [727, 287],
+  [727, 692],
+  [529, 692],
+  [529, 991],
+  [480, 991]
 ];
 
-const points = [
-  [455,1007 - 287],
-  [391,1007 - 287]
+const pointsBruts = [
+  [455, 287],
+  [391, 287]
 ];
 
-L.polyline(chemin, { color: '#FF8800' }).addTo(map);
-points.forEach(p => {
-  L.marker(p).addTo(map).bindPopup("Livraison ALTO");
+const cheminCorrigé = cheminBrut.map(([x, y]) => corrigerCoord(y, x));
+L.polyline(cheminCorrigé, { color: '#FF8800' }).addTo(map);
+
+pointsBruts.forEach(([x, y]) => {
+  L.marker(corrigerCoord(y, x)).addTo(map).bindPopup("Livraison ALTO");
 });
-
