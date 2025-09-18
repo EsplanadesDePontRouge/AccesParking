@@ -1,80 +1,78 @@
-html, body {
+body {
   margin: 0;
-  padding: 0;
-  height: 100%;
-  width: 100%;
-  font-family: sans-serif;
-  overflow: hidden;
-  background-color: #f0f0f0;
-  text-align: center;
+  font-family: 'Inter', sans-serif;
+  background-color: #f8f9fa;
+  color: #333;
 }
 
 h1 {
-  margin-top: 40px;
-}
-
-.menu {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  padding: 20px;
-  align-items: center;
+  font-size: 2rem;
+  font-weight: 600;
+  text-align: center;
+  margin-top: 2rem;
 }
 
 button {
-  padding: 12px 20px;
-  font-size: 16px;
-  background-color: #0078D4;
-  color: white;
+  background-color: #e0e0e0;
   border: none;
-  border-radius: 8px;
+  padding: 10px 16px;
+  border-radius: 6px;
   cursor: pointer;
-  width: 80%;
-  max-width: 300px;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
 }
 
 button:hover {
-  background-color: #005fa3;
+  background-color: #d0d0d0;
 }
 
 #map {
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
+  height: 80vh;
+  margin: 2rem auto;
+  border: 1px solid #ccc;
+  border-radius: 8px;
 }
 
-#retour {
-  position: fixed;
+/* 🔙 Bouton retour */
+.back-button {
+  position: absolute;
   top: 20px;
   left: 20px;
   z-index: 1000;
-}
-
-.filter {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  z-index: 1000;
-}
-
-.filter button {
-  margin: 0 5px;
+  background-color: #ffffff;
+  border: 1px solid #ccc;
   padding: 8px 12px;
-  font-size: 14px;
-  border: none;
   border-radius: 6px;
-  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
-.legend {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: white;
-  padding: 10px;
-  border-radius: 8px;
-  font-size: 14px;
-  box-shadow: 0 0 5px rgba(0,0,0,0.3);
+.back-button i {
+  font-size: 16px;
+}
+
+/* 🧭 Menu principal */
+.navbar {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  background-color: #ffffff;
+  padding: 1rem;
+  border-bottom: 1px solid #ddd;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+  color: #0078D4;
 }
