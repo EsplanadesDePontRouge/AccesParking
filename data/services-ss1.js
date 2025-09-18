@@ -13,21 +13,27 @@ map.fitBounds(bounds);
 const couleurs = {
   "E1–E2": "#0078D4",
   "E3": "#28A745",
-  "ALTO": "#FF8800"
+  "ALTO": "#FF8800",
+  "TEST": "#FF00FF"
 };
 
-// 📍 Coordonnées corrigées
+// 📍 Coordonnées brutes [y, x]
 const services = [
-  { nom: "S1", coord: [553, 724], groupe: "ALTO" }, // pas d'inversion
+  { nom: "S1", coord: [553, 724], groupe: "ALTO" },
   { nom: "S2", coord: [572, 724], groupe: "E3" },
   { nom: "S3", coord: [590, 724], groupe: "ALTO" },
-  { nom: "S4", coord: [10, 779], groupe: "E1–E2" }, // inversion appliquée
-  { nom: "S5", coord: [154, 484], groupe: "E3" }     // inversion appliquée
+  { nom: "S4", coord: [997, 779], groupe: "E1–E2" },
+  { nom: "S5", coord: [853, 484], groupe: "E3" },
+
+  // 🧪 Pings de test
+  { nom: "T1", coord: [100, 100], groupe: "TEST" },
+  { nom: "T2", coord: [500, 500], groupe: "TEST" },
+  { nom: "T3", coord: [900, 900], groupe: "TEST" },
+  { nom: "T4", coord: [997, 1215], groupe: "TEST" },
+  { nom: "T5", coord: [0, 0], groupe: "TEST" }
 ];
 
-// 📌 Marqueurs filtrables
-const marqueurs = [];
-
+// 📌 Marqueurs
 services.forEach(s => {
   const marker = L.circleMarker(s.coord, {
     radius: 8,
@@ -37,17 +43,4 @@ services.forEach(s => {
   }).addTo(map);
 
   marker.bindTooltip(s.nom, { permanent: true, direction: "top" });
-  marker.groupe = s.groupe;
-  marqueurs.push(marker);
 });
-
-// 🧪 Fonction de filtre
-function filtrer(groupe) {
-  marqueurs.forEach(m => {
-    if (groupe === 'all' || m.groupe === groupe) {
-      m.addTo(map);
-    } else {
-      map.removeLayer(m);
-    }
-  });
-}
