@@ -4,7 +4,7 @@ const map = L.map('map', {
 });
 
 const image = 'assets/EPR_SS1.png';
-const imageSize = [1007, 1215]; // hauteur, largeur
+const imageSize = [1007, 1215];
 const bounds = [[0, 0], imageSize];
 L.imageOverlay(image, bounds).addTo(map);
 map.fitBounds(bounds);
@@ -16,13 +16,13 @@ const couleurs = {
   "ALTO": "#FF8800"
 };
 
-// 📍 Coordonnées brutes [y, x] sans inversion
+// 📍 Coordonnées corrigées
 const services = [
-  { nom: "S1", coord: [553, 724], groupe: "ALTO" },
+  { nom: "S1", coord: [553, 724], groupe: "ALTO" }, // pas d'inversion
   { nom: "S2", coord: [572, 724], groupe: "E3" },
   { nom: "S3", coord: [590, 724], groupe: "ALTO" },
-  { nom: "S4", coord: [997, 779], groupe: "E1–E2" },
-  { nom: "S5", coord: [853, 484], groupe: "E3" }
+  { nom: "S4", coord: [10, 779], groupe: "E1–E2" }, // inversion appliquée
+  { nom: "S5", coord: [154, 484], groupe: "E3" }     // inversion appliquée
 ];
 
 // 📌 Marqueurs filtrables
