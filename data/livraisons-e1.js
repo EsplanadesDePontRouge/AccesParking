@@ -26,6 +26,6 @@ const chemin = [
 
 L.polyline(chemin, { color: '#0078D4', weight: 4 }).addTo(map);
 
-// 📍 Points E1
-L.marker(corriger(458, 231)).addTo(map).bindPopup("L5 - E1");
-L.marker(corriger(587, 230)).addTo(map).bindPopup("L6 - E1");
+// 📍 Points E1 avec labels permanents
+L.marker(corriger(458, 231)).addTo(map).bindTooltip("L5", { permanent: true, direction: "top" });
+L.marker(corriger(587, 230)).addTo(map).bindTooltip("L6", { permanent: true, direction: "top" });
