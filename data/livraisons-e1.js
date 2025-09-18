@@ -3,7 +3,6 @@ const map = L.map('map', {
   minZoom: -2
 });
 
-// 📌 Chargement du plan SS1
 const image = 'assets/EPR_SS1.png';
 const imageSize = [1007, 1215]; // hauteur, largeur
 const bounds = [[0, 0], imageSize];
@@ -11,14 +10,17 @@ const bounds = [[0, 0], imageSize];
 L.imageOverlay(image, bounds).addTo(map);
 map.fitBounds(bounds);
 
-// 📍 Coordonnées directes (déjà au format [y, x])
-const chemin = [
-  [476, 989],
-  [530, 989],
-  [530, 690],
-  [725, 690],
-  [725, 215]
+// 🔵 Cheminement E1
+const cheminE1 = [
+  [520, 990],
+  [471, 990],
+  [468, 690],
+  [273, 680],
+  [278, 218]
 ];
 
-L.polyline(chemin, { color: '#0078D4', weight: 4 }).addTo(map);
-L.marker([725, 215]).addTo(map).bindPopup("Livraison E1");
+L.polyline(cheminE1, { color: '#0078D4', weight: 4 }).addTo(map);
+
+// 📍 Points E1
+L.marker([231, 458]).addTo(map).bindPopup("L5 - E1");
+L.marker([230, 587]).addTo(map).bindPopup("L6 - E1");
