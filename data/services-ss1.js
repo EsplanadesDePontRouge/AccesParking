@@ -16,13 +16,13 @@ const couleurs = {
   "ALTO": "#FF8800"
 };
 
-// 📍 Coordonnées déjà converties pour SS1
+// 📍 Coordonnées déjà converties
 const services = [
-  { nom: "S1", coord: [562, 724], groupe: "ALTO" },   // 1007 - 445
-  { nom: "S2", coord: [579, 723], groupe: "E3" },     // 1007 - 428
-  { nom: "S3", coord: [596, 722], groupe: "ALTO" },   // 1007 - 411
-  { nom: "S4", coord: [785, 998], groupe: "E1-E2" },  // 1007 - 222
-  { nom: "S5", coord: [491, 855], groupe: "E3" }      // 1007 - 516
+  { nom: "S1", coord: [562, 724], groupe: "ALTO" },
+  { nom: "S2", coord: [579, 723], groupe: "E3" },
+  { nom: "S3", coord: [596, 722], groupe: "ALTO" },
+  { nom: "S4", coord: [785, 998], groupe: "E1-E2" },
+  { nom: "S5", coord: [491, 855], groupe: "E3" }
 ];
 
 // 📌 Marqueurs filtrables
