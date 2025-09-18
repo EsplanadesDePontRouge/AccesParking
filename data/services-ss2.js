@@ -4,7 +4,7 @@ const map = L.map('map', {
 });
 
 const image = 'assets/EPR_SS2.png';
-const imageSize = [1007, 1215]; // hauteur, largeur
+const imageSize = [977, 1217]; // hauteur, largeur
 const bounds = [[0, 0], imageSize];
 L.imageOverlay(image, bounds).addTo(map);
 map.fitBounds(bounds);
@@ -18,15 +18,15 @@ const couleurs = {
 
 // 📍 Coordonnées déjà converties
 const services = [
-  { nom: "S6",  coord: [783, 51],    groupe: "E1-E2" },
-  { nom: "S7",  coord: [801, 997],   groupe: "E1-E2" },
-  { nom: "S8",  coord: [866, 1119],  groupe: "E1-E2" },
-  { nom: "S9",  coord: [884, 1119],  groupe: "E1-E2" },
-  { nom: "S10", coord: [955, 1113],  groupe: "E1-E2" },
-  { nom: "S11", coord: [728, 1143],  groupe: "E3" },
-  { nom: "S12", coord: [563, 993],   groupe: "ALTO" },
-  { nom: "S13", coord: [421, 996],   groupe: "E3" },
-  { nom: "S14", coord: [134, 541],   groupe: "ALTO" }
+  { nom: "S6",  coord: [753, 51],    groupe: "E1-E2" },
+  { nom: "S7",  coord: [771, 997],   groupe: "E1-E2" },
+  { nom: "S8",  coord: [836, 1119],  groupe: "E1-E2" },
+  { nom: "S9",  coord: [854, 1119],  groupe: "E1-E2" },
+  { nom: "S10", coord: [925, 1113],  groupe: "E1-E2" },
+  { nom: "S11", coord: [698, 1143],  groupe: "E3" },
+  { nom: "S12", coord: [533, 993],   groupe: "ALTO" },
+  { nom: "S13", coord: [391, 996],   groupe: "E3" },
+  { nom: "S14", coord: [104, 541],   groupe: "ALTO" }
 ];
 
 // 📌 Marqueurs filtrables
