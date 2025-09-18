@@ -4,7 +4,7 @@ const map = L.map('map', {
 });
 
 const image = 'assets/EPR_SS1.png';
-const imageSize = [1007, 1215];
+const imageSize = [1211, 1005]; // hauteur, largeur
 const bounds = [[0, 0], imageSize];
 L.imageOverlay(image, bounds).addTo(map);
 map.fitBounds(bounds);
@@ -16,13 +16,18 @@ const couleurs = {
   "ALTO": "#FF8800"
 };
 
-// 📍 Coordonnées brutes [y, x] — sans transformation
+// ✅ Fonction de conversion [x, y] → Leaflet [y, x] avec inversion X
+function corriger(x, y) {
+  return [y, 1005 - x];
+}
+
+// 📍 Coordonnées corrigées
 const services = [
-  { nom: "S1", coord: [553, 724], groupe: "ALTO" },
-  { nom: "S2", coord: [572, 724], groupe: "E3" },
-  { nom: "S3", coord: [590, 724], groupe: "ALTO" },
-  { nom: "S4", coord: [997, 779], groupe: "E1–E2" },
-  { nom: "S5", coord: [853, 484], groupe: "E3" }
+  { nom: "S1", coord: corriger(724, 553), groupe: "ALTO" },
+  { nom: "S2", coord: corriger(724, 572), groupe: "E3" },
+  { nom: "S3", coord: corriger(724, 590), groupe: "ALTO" },
+  { nom: "S4", coord: corriger(779, 997), groupe: "E1–E2" },
+  { nom: "S5", coord: corriger(484, 853), groupe: "E3" }
 ];
 
 // 📌 Marqueurs filtrables
