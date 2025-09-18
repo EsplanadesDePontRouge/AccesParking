@@ -6,24 +6,23 @@ const map = L.map('map', {
 const image = 'assets/EPR_SS1.png';
 const imageSize = [1007, 1215];
 const bounds = [[0, 0], imageSize];
+
 L.imageOverlay(image, bounds).addTo(map);
 map.fitBounds(bounds);
 
 // Cheminement E2
 const chemin = [
-  [1007 - 886, 725],
-  [1007 - 690, 725],
-  [1007 - 690, 530],
-  [1007 - 990, 530],
-  [1007 - 990, 475]
+  [774, 812],
+  [776, 887],
+  [725, 886],
+  [725, 690],
+  [530, 690],
+  [530, 990],
+  [475, 990]
 ];
 
-const points = [
-  [1007 - 812, 774],
-  [1007 - 887, 776]
-];
+L.polyline(chemin, { color: '#0078D4', weight: 4 }).addTo(map);
 
-L.polyline(chemin, { color: '#0078D4' }).addTo(map);
-points.forEach(p => {
-  L.marker(p).addTo(map).bindPopup("Livraison E2");
-});
+// Points E2
+L.marker([774, 812]).addTo(map).bindPopup("Livraison E2");
+L.marker([776, 887]).addTo(map).bindPopup("Livraison E2");
