@@ -9,11 +9,6 @@ const bounds = [[0, 0], imageSize];
 L.imageOverlay(image, bounds).addTo(map);
 map.fitBounds(bounds);
 
-// ✅ Fonction de conversion [x, y] → Leaflet [y, x]
-function corriger(x, y) {
-  return [1007 - y, x];
-}
-
 // 🎨 Couleurs par groupe
 const couleurs = {
   "E1–E2": "#0078D4",
@@ -21,13 +16,13 @@ const couleurs = {
   "ALTO": "#FF8800"
 };
 
-// 📍 Liste des services SS1 (coordonnées données en [x, y])
+// 📍 Coordonnées déjà converties
 const services = [
-  { nom: "S1", coord: corriger(724, 553), groupe: "ALTO" },
-  { nom: "S2", coord: corriger(724, 572), groupe: "E3" },
-  { nom: "S3", coord: corriger(724, 590), groupe: "ALTO" },
-  { nom: "S4", coord: corriger(779, 997), groupe: "E1–E2" },
-  { nom: "S5", coord: corriger(484, 853), groupe: "E3" }
+  { nom: "S1", coord: [454, 724], groupe: "ALTO" },
+  { nom: "S2", coord: [435, 724], groupe: "E3" },
+  { nom: "S3", coord: [417, 724], groupe: "ALTO" },
+  { nom: "S4", coord: [10, 779], groupe: "E1–E2" },
+  { nom: "S5", coord: [154, 484], groupe: "E3" }
 ];
 
 // 📌 Marqueurs filtrables
