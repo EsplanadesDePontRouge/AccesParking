@@ -4,10 +4,15 @@ const map = L.map('map', {
 });
 
 const image = 'assets/EPR_SS1.png';
-const imageSize = [1211, 1005]; // hauteur, largeur
+const imageSize = [1007, 1215]; // hauteur, largeur
 const bounds = [[0, 0], imageSize];
 L.imageOverlay(image, bounds).addTo(map);
 map.fitBounds(bounds);
+
+// ✅ Fonction de conversion [x, y] → Leaflet [y, x]
+function convertirCoordonnees(x, y) {
+  return [1007 - y, x];
+}
 
 // 🎨 Couleurs par groupe
 const couleurs = {
@@ -16,20 +21,21 @@ const couleurs = {
   "ALTO": "#FF8800"
 };
 
-// 📍 Coordonnées brutes [y, x] — aucune transformation
+// 📍 Coordonnées brutes [x, y]
 const services = [
-  { nom: "S1", coord: [553, 724], groupe: "ALTO" },
-  { nom: "S2", coord: [572, 724], groupe: "E3" },
-  { nom: "S3", coord: [590, 724], groupe: "ALTO" },
-  { nom: "S4", coord: [997, 779], groupe: "E1–E2" },
-  { nom: "S5", coord: [853, 484], groupe: "E3" }
+  { nom: "S1", x: 724, y: 553, groupe: "ALTO" },
+  { nom: "S2", x: 724, y: 572, groupe: "E3" },
+  { nom: "S3", x: 724, y: 590, groupe: "ALTO" },
+  { nom: "S4", x: 779, y: 997, groupe: "E1–E2" },
+  { nom: "S5", x: 484, y: 853, groupe: "E3" }
 ];
 
 // 📌 Marqueurs filtrables
 const marqueurs = [];
 
 services.forEach(s => {
-  const marker = L.circleMarker(s.coord, {
+  const coord = convertirCoordonnees(s.x, s.y);
+  const marker = L.circleMarker(coord, {
     radius: 8,
     color: couleurs[s.groupe],
     fillColor: couleurs[s.groupe],
