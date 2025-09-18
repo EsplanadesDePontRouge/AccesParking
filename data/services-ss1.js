@@ -4,7 +4,7 @@ const map = L.map('map', {
 });
 
 const image = 'assets/EPR_SS1.png';
-const imageSize = [1007, 1215];
+const imageSize = [1007, 1215]; // hauteur, largeur
 const bounds = [[0, 0], imageSize];
 L.imageOverlay(image, bounds).addTo(map);
 map.fitBounds(bounds);
@@ -21,7 +21,7 @@ const couleurs = {
   "ALTO": "#FF8800"
 };
 
-// 📍 Liste des services SS1
+// 📍 Liste des services SS1 (coordonnées données en [x, y])
 const services = [
   { nom: "S1", coord: corriger(724, 553), groupe: "ALTO" },
   { nom: "S2", coord: corriger(724, 572), groupe: "E3" },
