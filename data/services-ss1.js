@@ -21,7 +21,7 @@ const couleurs = {
   "ALTO": "#FF8800"
 };
 
-// 📍 Liste des services SS1
+// 📍 Liste des services SS1 (coordonnées données en [x, y])
 const services = [
   { nom: "S1", coord: corriger(724, 553), groupe: "ALTO" },
   { nom: "S2", coord: corriger(724, 572), groupe: "E3" },
